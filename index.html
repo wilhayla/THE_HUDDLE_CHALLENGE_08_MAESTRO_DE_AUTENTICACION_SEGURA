@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema de Autenticación</title>
+  <!-- CSS BÁSICO PARA OCULTAR ELEMENTOS INICIALMENTE -->
+    <style>
+        #user-profile-section {
+            display: none; /* Oculto por defecto, main.js lo muestra */
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+        #logout-button {
+            display: none; /* Oculto por defecto, main.js lo muestra */
+        }
+    </style>
+</head>
+<body>
+
+  <main>
+    <!-- 🔑 NUEVA SECCIÓN: PERFIL DE USUARIO (SOLO VISIBLE CON SESIÓN ACTIVA) -->
+    <section id="user-profile-section">
+      <h2>Bienvenido, <span id="profile-username"></span></h2>
+      <p><strong>Email:</strong> <span id="profile-email"></span></p>
+      <p>Esta sección solo es visible si la llamada a <code>/api/me</code> fue exitosa.</p>
+    </section>
+
+    <section id="register-section">
+      <h2>Registro de Usuario</h2>
+      <form id="register-form">
+        <label for="register-username">Nombre de Usuario:</label>
+        <input type="text" id="register-username" required placeholder="Ej: john.doe" autocomplete="off">
+        <br>
+
+        <label for="register-email">Email:</label>
+        <input type="email" id="register-email" required placeholder="Ej: correo@dominio.com" autocomplete="off">
+        <br>
+
+        <label for="register-password">Contraseña:</label>
+        <input type="password" id="register-password" required placeholder="Mínimo 8 caracteres" autocomplete="new-password">
+        <br>
+        
+        <button type="submit">Registrar</button>
+      </form>
+      <p id="register-message"></p>
+    </section>
+
+    <hr>
+
+    <section id="login-section">
+      <h2>Iniciar Sesión</h2>
+      <form id="login-form">
+        <label for="login-indentifier">Usuario o Email:</label>
+        <input type="text" id="login-identifier" required placeholder="Nombre de usuario o email" autocomplete="off">
+        <br>
+        <label for="login-password">Contraseña:</label>
+        <input type="password" id="login-password" required placeholder="Tu contraseña" autocomplete="current-password">
+        <br>
+        <label>
+          <input type="checkbox" id="remember-me">
+          Mantener mi sesion iniciada persistente con Cookies
+        </label>
+        <br>
+        <button type="submit">Iniciar Sesión</button>
+      </form>
+      <p id="login-message"></p>
+    </section>
+
+    <hr>
+
+    <section id="user-actions">
+      <h2>Estado de Sesión</h2>
+      <button id="logout-button">Cerrar Sesión</button>
+      <p id="status-message"></p>
+    </section>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
